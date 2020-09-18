@@ -29,12 +29,12 @@ services:
     ports:
       - "27017:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_USERNAME: ithium
       MONGO_INITDB_ROOT_PASSWORD: mongo 
       MONGO_INITDB_DATABASE: ithium
     volumes: 
-      - ./mongodb/db:/data/db
       - ./mongodb/mongod.conf:/etc/mongod.conf
+      - ./mongodb/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
     networks:
       - app-network
 
