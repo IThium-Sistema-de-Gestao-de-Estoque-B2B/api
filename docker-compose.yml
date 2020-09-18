@@ -31,6 +31,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: ithium
+      MONGO_INITDB_DATABASE: ithium
+    volumes: 
+      - ./mongodb/mongod.conf:etc/mongod.conf
     networks:
       - app-network
 

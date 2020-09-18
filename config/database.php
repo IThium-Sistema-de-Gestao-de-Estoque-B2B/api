@@ -13,7 +13,7 @@ return [
     | to use as your default connection for all database work. Of course
     | you may use many connections at once using the Database library.
     |
-    */
+     */
 
     'default' => env('DB_CONNECTION', 'mongodb'),
 
@@ -31,18 +31,21 @@ return [
     | so make sure you have the driver for your particular database of
     | choice installed on your machine before you begin development.
     |
-    */
+     */
 
     'connections' => [
 
-	'mongodb' => [
-		'driver'   => 'mongodb',
-		'host'     => env('DB_HOST', 'localhost'),
-		'port'     => env('DB_PORT', 27017),
-		'database' => env('DB_DATABASE', 'ithium'),
-		'username' => env('DB_USERNAME', 'root'),
-		'password' => env('DB_PASSWORD', '')
-	],
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', 27017),
+            'database' => env('DB_DATABASE'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'options' => [
+                'database' =>  env('DB_DATABASE'), // required with Mongo 3+
+            ]
+        ],
 
         'sqlite' => [
             'driver' => 'sqlite',
@@ -111,7 +114,7 @@ return [
     | your application. Using this information, we can determine which of
     | the migrations on disk haven't actually been run in the database.
     |
-    */
+     */
 
     'migrations' => 'migrations',
 
@@ -124,7 +127,7 @@ return [
     | provides a richer body of commands than a typical key-value system
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
-    */
+     */
 
     'redis' => [
 
