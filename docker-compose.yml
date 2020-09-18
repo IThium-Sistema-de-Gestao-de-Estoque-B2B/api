@@ -20,6 +20,20 @@ services:
     networks:
       - app-network
 
+    # MongoDB Service
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    tty: true
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ithium
+    networks:
+      - app-network
+
   #Nginx Service
   webserver:
     image: nginx:alpine
