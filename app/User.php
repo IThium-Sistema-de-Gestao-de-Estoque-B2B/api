@@ -3,12 +3,34 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+/* use Illuminate\Foundation\Auth\User as Authenticatable; */
+use Jenssegers\Mongodb\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    /**
+     * The collection name
+     *
+     * @var array
+     */
+    protected $collection = 'users';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+    /**
+     * The collection name
+     *
+     * @var array
+     */
+    protected $collection = 'users';
 
     /**
      * The attributes that are mass assignable.

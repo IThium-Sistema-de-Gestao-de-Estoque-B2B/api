@@ -35,25 +35,6 @@ services:
     networks:
       - app-network
 
-  #MySQL Service
-  db:
-    image: mysql:5.7.22
-    container_name: db
-    restart: unless-stopped
-    tty: true
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_DATABASE: ithium 
-      MYSQL_ALLOW_EMPTY_PASSWORD: 1 
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
-    volumes:
-        - dbdata:/var/lib/mysql
-        - ./mysql/my.cnf:/etc/mysql/my.cnf
-
-    networks:
-      - app-network
 
 #Volumes
 volumes:
