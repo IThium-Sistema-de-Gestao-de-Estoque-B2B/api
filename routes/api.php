@@ -14,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+$api = app('Dingo\Api\Routing\Router');
+
+
+
+$api->version(['v1'], function ($api) {
+    $api->any('/', function () {
+        throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException('Forbidden.');
+    });
+
+
+    $api->post('auth/login', [
+        'as'   => 'auth.login',
+        'uses' => 'App\Http\Controllers\AuthController@login',
+    ]);
 });
+
