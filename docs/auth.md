@@ -6,25 +6,31 @@
 
  + Request (application/json)
     + Body
+        ```json
         {
             "email": "email@example.com",
             "password": "foo-bar"
         }
+        ```
 
  + Response 200 (application/json)
     + Body
+        ```json
         {
             "access_token": "your_generated_token",
             "token_type": "bearer",
             "expires_in": 3600
         }
+        ```
 
  + Response 401 (application/json)
     + Body 
+        ```json
         {
             "message": "Unauthorized",
             "status_code": 401
         }
+        ```
 
 ## Log the user out (Invalidate the token). [POST /auth/logout]
 
@@ -33,9 +39,11 @@
         Authorization: Bearer your_token_here
 
     + Response 200 (application/json)
+        ```json
         {
             "message": "Successfully logged out"
         } 
+        ```
 
 ## Refresh a token. [POST /auth/refresh]
 
@@ -45,18 +53,22 @@
 
  + Response 200 (application/json)
     + Body
+        ```json
         {
             "access_token": "your_generated_token",
             "token_type": "bearer",
             "expires_in": 3600
         }
+        ```
 
 + Response 401 (application/json)
     + Body
+        ```json
         {
             "message": "The token has been blacklisted",
             "status_code": 401
         }
+        ```
 
 ## Get the logged user. [GET /auth/me]
 
@@ -66,6 +78,7 @@
 
  + Response 200 (application/json)
     + Body
+        ```json
         {
             "data": {
                 "id": "somerandomid",
@@ -73,11 +86,14 @@
                 "email": "email@example.com"
             }
         }
+        ```
 
  + Response 401 (application/json)
     + Body
+        ```json
         {
             "message": "The token has been blacklisted",
             "status_code": 401
         }
+        ```
 
