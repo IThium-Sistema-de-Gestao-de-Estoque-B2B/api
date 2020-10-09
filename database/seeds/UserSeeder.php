@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         ];
 
         foreach($users as $user) {
-            \App\User::create($user); 
+            \App\Entities\User::create($user); 
         }
     }
 }
