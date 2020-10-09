@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Transformers\UserTransformer;
 
-class AuthController extends Controller{
+
+class AuthController extends Controller
+{
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
 
     /**
      * Get a JWT via given credentials.
-     *
-     * @Post("/login")
-     * @Transaction({
-     *     @Request({"phone": "11912345678", "password": "foo-bar"}),
-     *     @Response(200, body={"access_token": "your_generated_token", "token_type": "bearer", "expires_in": 3600}),
-     *     @Response(401, body={"message": "Unauthorized", "status_code": 401 })
-     * })
      *
      * @param Request $request
      * @return \Dingo\Api\Http\Response
@@ -35,6 +40,28 @@ class AuthController extends Controller{
         return $this->respondWithToken($token);
     }
 
+    /**
+     * Get the authenticated User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getUser()
+    {
+        return $this->response->item(auth()->user(), new UserTransformer);
+
+    }
+    /**
+     * Log the user out (Invalidate the token).
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout()
+    {
+        auth()->logout();
+
+        return $this->response->array(['message' => 'Successfully logged out']);
+
+    }
 
     /**
      * Get the token array structure.
