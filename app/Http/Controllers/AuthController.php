@@ -61,7 +61,18 @@ class AuthController extends Controller
         Auth::logout();
 
         return $this->response->array(['message' => 'Successfully logged out']);
+    }
 
+
+    
+    /**
+     * Refresh a token.
+     *
+     * @return \Dingo\Api\Http\Response
+     */
+    public function refresh()
+    {
+        return $this->respondWithToken(auth()->refresh());
     }
 
     /**
