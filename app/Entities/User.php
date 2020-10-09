@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 use Jenssegers\Mongodb\Auth\User as Authenticatable; // MongoDB Authentication
 use Tymon\JWTAuth\Contracts\JWTSubject; // JWTAuth 
+
 
 class User extends Authenticatable implements JWTSubject
 {

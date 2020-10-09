@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -12,11 +13,11 @@ class UserSeeder extends Seeder
     public function run()
     {
         $users = [
-            [ 'name' => 'leonardo', 'email' => 'leeosilva0909@gmail.com', 'password' => 'batata', ],
-            [ 'name' => 'aron', 'email' => 'aron@gmail.com', 'password' => 'batata', ],
-            [ 'name' => 'milena', 'email' => 'milena@gmail.com', 'password' => 'batata', ],
-            [ 'name' => 'marvin', 'email' => 'marvin@gmail.com', 'password' => 'batata', ],
-            [ 'name' => 'joao', 'email' => 'joao@gmail.com', 'password' => 'batata', ]
+            [ 'name' => 'leonardo', 'email' => 'leeosilva0909@gmail.com', 'password' => Hash::make('batata'), ],
+            [ 'name' => 'aron', 'email' => 'aron@gmail.com', 'password' => Hash::make('batata'), ],
+            [ 'name' => 'milena', 'email' => 'milena@gmail.com', 'password' => Hash::make('batata'), ],
+            [ 'name' => 'marvin', 'email' => 'marvin@gmail.com', 'password' => Hash::make('batata'), ],
+            [ 'name' => 'joao', 'email' => 'joao@gmail.com', 'password' => Hash::make('batata'), ]
         ];
 
         foreach($users as $user) {

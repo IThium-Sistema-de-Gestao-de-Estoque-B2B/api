@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Transformers\UserTransformer;
+use Illuminate\Support\Facades\Auth;
 
 
 class AuthController extends Controller
@@ -33,8 +34,8 @@ class AuthController extends Controller
         ]);
 
         $credentials = $request->only(['email', 'password']);
-        if (!$token = auth()->attempt($credentials)) {
-            return $this->response->errorUnauthorized();
+        if (!$token = Auth::attempt($credentials)) {
+            return $this->response->errorUnauthorized('Invalid Email or Password.');
         }
 
         return $this->respondWithToken($token);
@@ -47,7 +48,7 @@ class AuthController extends Controller
      */
     public function getUser()
     {
-        return $this->response->item(auth()->user(), new UserTransformer);
+        return $this->response->item(Auth::user(), new UserTransformer);
 
     }
     /**
@@ -57,7 +58,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        auth()->logout();
+        Auth::logout();
 
         return $this->response->array(['message' => 'Successfully logged out']);
 
@@ -75,7 +76,7 @@ class AuthController extends Controller
         return $this->response->array([
             'access_token' => $token,
             'token_type'   => 'bearer',
-            'expires_in'   => auth()->factory()->getTTL() * 60,
+            'expires_in'   => Auth::factory()->getTTL() * 60,
         ]);
     }
 }
