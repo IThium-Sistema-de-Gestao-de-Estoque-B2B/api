@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 $api = app('Dingo\Api\Routing\Router');
 
-
-
 $api->version(['v1'], function ($api) {
     $api->any('/', function () {
         throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException('Forbidden.');
@@ -29,12 +27,26 @@ $api->version(['v1'], function ($api) {
     ]);
 
     $api->group(['middleware' => 'api.auth'], function ($api) {
+
         $api->group(['prefix' => 'auth'], function ($api) {
             $api->post('logout', [
                 'as'   => 'auth.logout',
                 'uses' => 'App\Http\Controllers\AuthController@logout',
             ]);
+
+            $api->post('refresh', [
+                'as'   => 'auth.refresh',
+                'uses' => 'App\Http\Controllers\AuthController@refresh',
+            ]);
+
+            $api->get('me', [
+                'as'   => 'auth.me',
+                'uses' => 'App\Http\Controllers\AuthController@getUser',
+            ]);
+
         });
+
+
 
     });
 });
