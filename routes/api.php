@@ -47,7 +47,7 @@ $api->version(['v1'], function ($api) {
         });
 
 
-
+        $api->resource('users', 'App\Http\Controllers\UserController', ['middleware' => 'role:admin,user']);
     });
 });
 

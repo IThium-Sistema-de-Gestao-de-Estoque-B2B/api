@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 use Jenssegers\Mongodb\Auth\User as Authenticatable; // MongoDB Authentication
 use Tymon\JWTAuth\Contracts\JWTSubject; // JWTAuth 
 
-
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
@@ -63,6 +62,14 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTIdentifier()
     {
         return $this->getKey();
+    }
+
+    /**
+         * Gets the role of the user.
+     *
+     * @return [TODO:type] [TODO:description]
+     */
+    public function getRole(){
     }
 
     /**
