@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities;
+namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
@@ -65,11 +65,12 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
-         * Gets the role of the user.
+     * Gets the role of the user.
      *
-     * @return [TODO:type] [TODO:description]
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function getRole(){
+    public function role(){
+        $this->belongTo('\App\Models\Role');
     }
 
     /**

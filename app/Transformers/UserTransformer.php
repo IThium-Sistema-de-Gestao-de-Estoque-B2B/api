@@ -2,7 +2,7 @@
 
 namespace App\Transformers;
 
-use App\Entities\User;
+use App\Models\User;
 use League\Fractal\TransformerAbstract;
 
 class UserTransformer extends TransformerAbstract
@@ -21,5 +21,16 @@ class UserTransformer extends TransformerAbstract
             'email'      => $user->email,
         ];
     }
+
+    /**
+     * Includes the role into the transformer data
+     * 
+     * @param User $user
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includeRole(User $user){
+        return $this->item($user->role, new RoleTransformer)
+    }
+
 }
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Entities;
+namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class Stock extends Model
+class Company extends Model
 {
     //
 }
