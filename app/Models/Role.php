@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities;
+namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
 
@@ -14,4 +14,5 @@ class Role extends Model
     protected $hidden = [
         'created_at', 'updated_at',
     ];
+
 }

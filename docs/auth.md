@@ -83,7 +83,14 @@
             "data": {
                 "id": "somerandomid",
                 "name": "foo",
-                "email": "email@example.com"
+                "email": "email@example.com",
+                "role": {
+                    "data": {
+                        "id": 0,
+                        "slug": "role",
+                        "name": "The User's role"
+                    }
+                }
             }
         }
         ```

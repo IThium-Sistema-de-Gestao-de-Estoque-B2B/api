@@ -49,7 +49,6 @@ class AuthController extends Controller
     public function getUser()
     {
         return $this->response->item(Auth::user(), new UserTransformer);
-
     }
     /**
      * Log the user out (Invalidate the token).
@@ -62,8 +61,6 @@ class AuthController extends Controller
 
         return $this->response->array(['message' => 'Successfully logged out']);
     }
-
-
     
     /**
      * Refresh a token.

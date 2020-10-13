@@ -17,7 +17,7 @@ class RoleSeeder extends Seeder
         ];
 
         foreach($roles as $role) {
-            \App\Entities\Role::create($role); 
+            \App\Models\Role::create($role); 
         }
     }
 }
