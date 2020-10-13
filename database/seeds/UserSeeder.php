@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\Role;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -12,12 +14,15 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $admin_id = Role::where('slug', 'admin')->first()->id;
+        // $user_id = Role::where('slug', 'admin')->first()->id; 
+
         $users = [
-            [ 'name' => 'leonardo', 'email' => 'leeosilva0909@gmail.com', 'password' => Hash::make('batata'), ],
-            [ 'name' => 'aron', 'email' => 'aron@gmail.com', 'password' => Hash::make('batata'), ],
-            [ 'name' => 'milena', 'email' => 'milena@gmail.com', 'password' => Hash::make('batata'), ],
-            [ 'name' => 'marvin', 'email' => 'marvin@gmail.com', 'password' => Hash::make('batata'), ],
-            [ 'name' => 'joao', 'email' => 'joao@gmail.com', 'password' => Hash::make('batata'), ]
+            [ 'name' => 'leonardo', 'email' => 'leeosilva0909@gmail.com', 'password' => Hash::make('batata'), 'role_id' => $admin_id,],
+            [ 'name' => 'aron', 'email' => 'aron@gmail.com', 'password' => Hash::make('batata'), 'role_id' => $admin_id,],
+            [ 'name' => 'milena', 'email' => 'milena@gmail.com', 'password' => Hash::make('batata'), 'role_id' => $admin_id,],
+            [ 'name' => 'marvin', 'email' => 'marvin@gmail.com', 'password' => Hash::make('batata'), 'role_id' => $admin_id,],
+            [ 'name' => 'joao', 'email' => 'joao@gmail.com', 'password' => Hash::make('batata'), 'role_id' => $admin_id,]
         ];
 
         foreach($users as $user) {

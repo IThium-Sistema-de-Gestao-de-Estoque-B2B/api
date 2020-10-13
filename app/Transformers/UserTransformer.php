@@ -8,6 +8,13 @@ use League\Fractal\TransformerAbstract;
 class UserTransformer extends TransformerAbstract
 {
     /**
+     * Include resources without needing it to be requested.
+     *
+     * @var array
+     */
+    protected $defaultIncludes = ['role'];
+
+    /**
      * Turn this item object into a generic array
      *
      * @param User $user
@@ -28,9 +35,8 @@ class UserTransformer extends TransformerAbstract
      * @param User $user
      * @return \League\Fractal\Resource\Item
      */
-    public function includeRole(User $user){
-        return $this->item($user->role, new RoleTransformer)
+    protected function includeRole(User $user){
+        return $this->item($user->role, new RoleTransformer);
     }
-
 }
 

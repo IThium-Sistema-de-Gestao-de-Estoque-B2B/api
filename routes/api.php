@@ -47,7 +47,8 @@ $api->version(['v1'], function ($api) {
         });
 
 
-        $api->resource('users', 'App\Http\Controllers\UserController', ['middleware' => 'role:admin,user']);
+        /* $api->resource('users', 'App\Http\Controllers\UserController', ['middleware' => 'role:admin,user']); */
     });
+    $api->resource('users', 'App\Http\Controllers\UserController'); // TODO: put inside middleware api.auth
 });
 
