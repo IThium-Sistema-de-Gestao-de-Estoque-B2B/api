@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
