@@ -45,6 +45,9 @@
             "database/factories"
         ]
     },
+    "provide" : {
+        "ext-mongo": "*"
+    },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
