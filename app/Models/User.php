@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
-/* use Illuminate\Foundation\Auth\User as Authenticatable; */
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-use Jenssegers\Mongodb\Auth\User as Authenticatable; // MongoDB Authentication
 use Tymon\JWTAuth\Contracts\JWTSubject; // JWTAuth 
 
 class User extends Authenticatable implements JWTSubject
@@ -67,7 +66,7 @@ class User extends Authenticatable implements JWTSubject
     /**
      * Gets the role of the user.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
     public function role(){
         return $this->belongsTo(Role::class);
